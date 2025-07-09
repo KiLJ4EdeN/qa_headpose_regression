@@ -7,6 +7,25 @@ Estimate three angles using a face image, the angles correspond to yaw, roll, pi
 
 Consider that some of this is inspired from FSANet at the time [FSANet](https://github.com/shamangary/FSA-Net), while imporving and speeding up inference, the model achieves the same inferece time as FSANet on GPU (3ms), using only tflite and 8 cpu cores.
 
+## UPDATE
+i have rewritten the original tensorflow code with torch. for now same results aren't guaranteed but i'll work on it. Original code is located in the [IPYNB](./train_pose_predictor.ipynb)
+
+to train the model again simply:
+
+### 1. download the datasets
+```bash
+gdown 1j6GMx33DCcbUOS8J3NHZ-BMHgk7H-oC_
+unzip data.zip
+mv data.zip archive
+```
+
+### 2. train
+```bash
+python train.py
+```
+
+observe the results
+
 ## Examples
 ( YAW PITCH ROLL order ):  
 ![image](https://github.com/KiLJ4EdeN/head_pose_regression/assets/57220509/a47f5bb7-4766-47a2-8e9b-512815e47332)

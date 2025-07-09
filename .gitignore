@@ -1,0 +1,10 @@
+env
+*.pth
+*.pt
+saved_model
+*.h5
+*.hdf5
+archive
+data
+checkpoints
+**__pycache_**
