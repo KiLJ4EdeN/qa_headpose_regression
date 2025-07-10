@@ -68,6 +68,8 @@ def benchmark(model):
         print(f'MAE: {(yaw_mae + pitch_mae + roll_mae)/3:.3f}\n')
 
 best_val_loss = float('inf')
+patience = 5
+no_improve_epochs = 0
 
 for epoch in range(epochs):
     model.train()
@@ -110,7 +112,13 @@ for epoch in range(epochs):
 
     if val_loss < best_val_loss:
         best_val_loss = val_loss
+        no_improve_epochs = 0
         torch.save(model.state_dict(), os.path.join(checkpoint_dir, f"best.pt"))
+    else:
+        no_improve_epochs += 1
+        if no_improve_epochs >= patience:
+            print(f"Early stopping at epoch {epoch+1} due to no improvement in {patience} epochs.")
+            break
 
     lr_scheduler.step(epoch)
 

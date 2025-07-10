@@ -8,3 +8,4 @@ archive
 data
 checkpoints
 **__pycache_**
+*.out
